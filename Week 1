@@ -127,6 +127,14 @@ import pandas as pd
 df = pd.read_csv("bee_data.csv")
 print(df)
 
+[Hw7]
+from PIL import Image
+im = Image.open("python_pic.png") # 이미지파일 python_pic으로 저장함
+im.show()
 
+from matplotlib import pyplot as plt
+img = plt.imread("python_pic.png")
+imgplot = plt.imshow(img)
+plt.show()
 
 

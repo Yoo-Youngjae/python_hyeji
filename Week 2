@@ -55,6 +55,18 @@ sorted(입력값) # sorted 함수는 정렬된 입력값을 리스트로 돌려�
 리스트 객체.sort() # sort 함수는 리스트 자료형에만 사용되며 객체만 정렬하고 결과는 돌려주지 않음
 
 [Hw7]
+import random
+print(random.random())
+print(random.randint(1, 45))
+
+[Hw8]
+import time
+start = time.time()
+for number in range(1, 1001):
+    if number % 3 == 0:
+        print(number)
+end = time.time()
+print(end - start)
 
 
 

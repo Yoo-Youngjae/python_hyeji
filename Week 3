@@ -1,0 +1,98 @@
+# 1점문제
+# 1)
+import random
+random_numls = []
+while len(random_numls)<6:
+    random_num = random.randint(1,46)
+    if random_num not in random_numls:
+        random_numls.append(random_num)
+print(random_numls)
+
+# 2)
+import os
+import time
+os.mkdir(time.strftime('%Y-%m-%d-%X', time.localtime(time.time())))
+
+# 3)
+zero_ls = []
+while len(zero_ls)<100:
+    zero_ls.append(0)
+print(zero_ls)
+
+# 4)
+zero_ls = []
+double_ls = []
+while len(zero_ls)<100:
+    zero_ls.append(0)
+while len(double_ls)<100:
+    double_ls.append(zero_ls)
+print(double_ls)
+
+# 2점문제
+# 1)
+import random
+random_100ls = []
+while len(random_100ls) < 100:
+    random_100ls.append(random.randint(-1,1))
+print(random_100ls)
+# 2)
+print(sorted(random_100ls))
+# 3)
+import matplotlib.pyplot as plt
+plt.plot(sorted(random_100ls))
+plt.show()
+
+# 3점문제
+# 1-1) 10 x 10의 말판을 list를 이용해 만들기
+def make_grid(h,w):
+    grid = [[" . " for _ in range(w)] for _ in range(h)]
+    return grid
+print('\n'.join(''.join(row) for row in make_grid(10,10)))
+a ='\n'.join(''.join(row) for row in make_grid(10,10))
+grid_ls = make_grid(10,10)
+
+# 1-2) 말판에 사람이 두 숫자를 좌표로 받으면 말판에 x 말이 나오도록 구현
+import random
+def omuk_input():
+    xinput = input().split()
+    xinput = [int(num) for num in xinput]
+    y = xinput[1]
+    x = xinput[0]
+    if grid_ls[y - 1][x - 1] == ' . ':
+        grid_ls[y - 1][x - 1] = ' X '
+    # 1-3) 사람이 좌표 입력시, 비어있는 칸이 아닌, 다른 말이 놓여있는 상태였다면, ‘다른 좌표를 입력해야 합니다' 라는 경고문구가 뜬뒤, 다시 입력을 받는 로직을 추가합니다.
+    else:
+        print("다른 좌표를 입력해야 합니다")
+        omuk_input()
+    # 1-4) 사람이 말(X)을 성공적으로 놓은 뒤, 컴퓨터(상대)가 random 하게 말판에 말(O)을 놓는 로직을 추가합니다. [이 때, 위의 문제 2-3) 과 같이 빈 칸이 아니면 다시 놓는 로직을 추가합니다.
+    # 1-5) 문제 2) 에서 문제 4) 의 과정이 무한 반복되도록 만듭니다.
+    while grid_ls[y - 1][x - 1] == ' X ':
+        y2 = random.randint(1, 10)
+        x2 = random.randint(1, 10)
+        if grid_ls[y2 -1][x2 - 1] != ' . ': continue
+        else:
+            grid_ls[y2 - 1][x2 - 1] = ' O '
+            print('\n'.join(''.join(row) for row in grid_ls))
+            omuk_input()
+omuk_input()
+# 1-6) 사람(X) 혹은 컴퓨터(O) 가 말을 놓은 뒤, 가로, 세로, 대각선에 연속된 동일한 말 5개가 존재하면, 게임이 끝나는 로직을 추가합니다.
+(코드수정중)
+
+# 2-1) image 를 32 x 32의 크기로 resize
+from PIL import Image
+im = Image.open("python_pic.png")
+im = im.resize((32, 32))
+im.save("python_pic_resized.png")
+
+# 2-2) 이미지를 numpy 행렬로 바꿈
+import numpy as np
+np_im = np.array(im)
+print(np_im)
+
+# 2-3) numpy 행렬을 matplotlib 로 show
+plt.imshow(np_im)
+plt.show()
+
+# 2-4)
+np_im_tps = np_im.transpose()
+print(np_im_tps)

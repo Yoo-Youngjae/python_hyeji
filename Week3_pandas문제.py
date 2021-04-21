@@ -19,3 +19,12 @@ print(df_middle)
 df_middle.to_csv('bee_data_crop.csv', index=False) # index 번호 제거
 
 # 3-5) bee_data_crop.csv 파일을 열어 [period, state, pesticide, varroa, other pest, diseases] 를 포함하는 dataframe 변수 X과 ‘lost colonies’ 를 포함하는 series 변수 Y를 만들어 주세요
+newdf = pd.read_csv('bee_data_crop.csv')
+newdf.rename(columns = {'Period':'X', 'State':'X', 'Pesticide':'X', 'Varroa':'X', 'Otherpest':'X', 'Diseases':'X', 'Lost Colonies':'Y'}, inplace=True)
+x_newdf = newdf.drop(['Other Factors', 'Y'], axis=1)
+print(x_newdf)
+y_newdf = newdf.drop(['Other Factors','X'], axis=1)
+print(y_newdf)
+
+
+
